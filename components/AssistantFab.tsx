@@ -1,20 +1,34 @@
 "use client";
 import React from "react";
 
-type Props = { onClick?: () => void; label?: string };
-
-export default function AssistantFab({ onClick, label = "Оюунсанаа" }: Props) {
+export default function AssistantFab({ label }: { label: string }) {
   return (
     <button
-      onClick={onClick}
-      className="fixed bottom-5 right-5 rounded-full px-5 py-3 shadow-lg"
       style={{
-        backdropFilter: "blur(8px)",
-        background: "rgba(155, 184, 185, 0.18)",
-        border: "1px solid rgba(255,255,255,0.18)"
+        position: "fixed",
+        bottom: 24,
+        right: 24,
+        backgroundColor: "#0b2830",
+        color: "white",
+        border: "none",
+        borderRadius: "50%",
+        width: 64,
+        height: 64,
+        fontSize: 12,
+        boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+        cursor: "pointer",
       }}
     >
-      {label}
+      💬
+      <span
+        style={{
+          display: "block",
+          fontSize: 10,
+          marginTop: 4,
+        }}
+      >
+        {label}
+      </span>
     </button>
   );
 }
