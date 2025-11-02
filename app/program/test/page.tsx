@@ -1,6 +1,6 @@
 'use client';
 
-import AssistantFab from '@/components/AssistantFab';
+import AssistantFab from "@/components/ui/AssistantFab";
 import GlassCard from '@/components/ui/GlassCard';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
