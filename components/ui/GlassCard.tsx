@@ -1,15 +1,17 @@
+// /components/ui/GlassCard.tsx
 'use client';
-
 import React from 'react';
 
-type Props = React.PropsWithChildren<{ className?: string }>;
+type Props = React.PropsWithChildren<{
+  className?: string;
+  header?: string; // << нэмж байна
+}>;
 
-export default function GlassCard({ className = '', children }: Props) {
+export default function GlassCard({ className = '', header, children }: Props) {
   return (
     <div
       className={className}
       style={{
-        // #9BB8B9 суурьтай тунгалаг шилэн карт
         background: 'rgba(155, 184, 185, 0.35)',
         border: '1px solid rgba(255,255,255,0.35)',
         borderRadius: 16,
@@ -19,6 +21,11 @@ export default function GlassCard({ className = '', children }: Props) {
         padding: 24,
       }}
     >
+      {header && (
+        <h1 style={{ marginTop: 0, marginBottom: 8, fontSize: 24, fontWeight: 800, color: '#0b2830' }}>
+          {header}
+        </h1>
+      )}
       {children}
     </div>
   );
