@@ -1,61 +1,43 @@
-// app/page.tsx
 import Link from "next/link";
-import GlassCard from "../components/ui/GlassCard";
+import GlassCard from "@/components/ui/GlassCard";
+import AssistantFab from "@/components/ui/AssistantFab";
+export const dynamic = "force-static";
 
-export default function IntroPage(){
+const tiles = [
+  { title: "Хөтөлбөр", href: "/health/plan" },
+  { title: "Даалгавар", href: "/health/task" },
+  { title: "Хоол · Ус", href: "/health/nutrition" },
+  { title: "Хөдөлгөөн", href: "/health/movement" },
+  { title: "Нойр", href: "/health/sleep" },
+  { title: "Амралт", href: "/health/rest" },
+  { title: "Муу зуршил", href: "/health/habits" },
+  { title: "Үзлэг", href: "/health/check" },
+  { title: "Тайлан", href: "/health/report" },
+  { title: "Дүгнэлт", href: "/health/summary" }
+];
+
+export default function Home() {
   return (
-    <div style={{display:"grid", gap:20}}>
-      <GlassCard className="glass" header="Эрүүл мэндийн хөтөлбөрт тавтай морил!">
-        <div style={{display:"grid", gap:18, gridTemplateColumns:"minmax(0,1fr) 380px"}}>
-          <div>
-            <p>
-              Доорх үйлчилгээг “Оюунсанаа” хиймэл оюун туслах гүйцэтгэнэ.
-              <b> Оюунсанаа нь эмч биш</b>; зөвлөгөө нь танин мэдэхүй, амьдралын хэв маягийн
-              чиглэл өгөх зорилготой. Эрүүл мэндийн зовиур, яаралтай тусламж шаардлагатай
-              тохиолдолд мэргэжлийн эмчид хандана уу.
-            </p>
-            <p>
-              Хөтөлбөр нь 5 үзүүлэлтээр таны өдөр тутмын явцыг хянаж дүгнэнэ:
-              <b> Хоол/ус</b>, <b>Хөдөлгөөн</b>, <b>Нойр</b>, <b>Амралт</b>, <b>Муу зуршил</b>.
-            </p>
-            <Link href="/health/test" className="btn">Эхлэх</Link>
-          </div>
-
-          {/* Зураг: /public/images/doctor.jpg байрлуул */}
-          <div className="glass" style={{overflow:"hidden", borderRadius:16}}>
-            <img
-              src="/images/doctor.jpg"
-              alt="OyunSanaa assistant"
-              style={{width:"100%", height:420, objectFit:"cover", display:"block"}}
-            />
-          </div>
-        </div>
-      </GlassCard>
-
-      <div style={{display:"grid", gap:16, gridTemplateColumns:"repeat(5, minmax(0,1fr))"}}>
-        <MiniLink title="Хөтөлбөр" href="/health/plan"/>
-        <MiniLink title="Даалгавар" href="/health/task"/>
-        <MiniLink title="Хоол · Ус" href="/health/nutrition"/>
-        <MiniLink title="Хөдөлгөөн" href="/health/movement"/>
-        <MiniLink title="Нойр" href="/health/sleep"/>
-        <MiniLink title="Амралт" href="/health/rest"/>
-        <MiniLink title="Муу зуршил" href="/health/habits"/>
-        <MiniLink title="Тайлан" href="/health/report"/>
-        <MiniLink title="Дүгнэлт" href="/health/summary"/>
-        <MiniLink title="Тохиргоо" href="/health/settings"/>
+    <main style={{ maxWidth: 1080, margin: "0 auto", padding: "32px 16px" }}>
+      <div style={{
+        marginBottom: 20, padding: "16px 18px",
+        borderRadius: 16, border: "1px solid rgba(0,0,0,0.08)",
+        background: "rgba(155,184,185,0.14)",
+        backdropFilter: "blur(6px)"
+      }}>
+        <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, color:"#0b2830" }}>Эрүүл мэнд</h1>
+        <p style={{ margin: "8px 0 0", opacity: .8, color:"#0b2830" }}>Доорх 10 цэснээс аль нэгийг дарж орно.</p>
       </div>
-    </div>
-  );
-}
 
-function MiniLink({title, href}:{title:string; href:string}){
-  return (
-    <Link href={href} className="glass" style={{
-      display:"flex", alignItems:"center", justifyContent:"center",
-      height:96, textDecoration:"none", color:"inherit", fontWeight:600,
-      borderRadius:16
-    }}>
-      {title}
-    </Link>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, minmax(0, 1fr))", gap: 16 }}>
+        {tiles.map((t) => (
+          <Link key={t.href} href={t.href} style={{ textDecoration: "none", color: "inherit" }}>
+            <GlassCard>{t.title}</GlassCard>
+          </Link>
+        ))}
+      </div>
+
+      <AssistantFab label="Туслах" />
+    </main>
   );
 }
