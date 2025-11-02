@@ -1,32 +1,25 @@
-// components/ui/GlassCard.tsx
-import React from "react";
+'use client';
 
-type Props = React.PropsWithChildren<{
-  as?: keyof JSX.IntrinsicElements;
-  className?: string;
-  header?: React.ReactNode;
-  actions?: React.ReactNode;
-}>;
+import React from 'react';
 
-export default function GlassCard({
-  as:Tag="section",
-  className="",
-  header,
-  actions,
-  children
-}: Props){
+type Props = React.PropsWithChildren<{ className?: string }>;
+
+export default function GlassCard({ className = '', children }: Props) {
   return (
-    <Tag className={`glass ${className}`} style={{padding:16}}>
-      {(header || actions) && (
-        <div style={{
-          display:"flex", alignItems:"center", justifyContent:"space-between",
-          marginBottom:12
-        }}>
-          <div style={{fontWeight:700, fontSize:18}}>{header}</div>
-          {actions}
-        </div>
-      )}
+    <div
+      className={className}
+      style={{
+        // #9BB8B9 суурьтай тунгалаг шилэн карт
+        background: 'rgba(155, 184, 185, 0.35)',
+        border: '1px solid rgba(255,255,255,0.35)',
+        borderRadius: 16,
+        boxShadow: '0 10px 30px rgba(0,0,0,0.12)',
+        backdropFilter: 'blur(12px) saturate(1.2)',
+        WebkitBackdropFilter: 'blur(12px) saturate(1.2)',
+        padding: 24,
+      }}
+    >
       {children}
-    </Tag>
+    </div>
   );
 }
