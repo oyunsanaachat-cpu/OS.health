@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import GlassCard from "@/components/ui/GlassCard";
-import AssistantFab from "@/components/ui/AssistantFab";
 
 export const dynamic = "force-static";
 
@@ -72,7 +71,6 @@ export default function ProgramIntroPage() {
         </Link>
       </div>
 
-      <AssistantFab label="Оюунсанаа" />
     </main>
   );
 }
