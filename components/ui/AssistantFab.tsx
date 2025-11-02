@@ -1,34 +1,41 @@
 "use client";
 import React from "react";
 
-export default function AssistantFab({ label }: { label: string }) {
+type Props = {
+  label?: string;
+  onClick?: () => void;
+  style?: React.CSSProperties;
+};
+
+/** Энгийн floating action button (баруун доор) */
+export default function AssistantFab({
+  label = "Туслах",
+  onClick,
+  style,
+}: Props) {
   return (
     <button
+      aria-label="assistant"
+      onClick={onClick}
       style={{
         position: "fixed",
-        bottom: 24,
         right: 24,
-        backgroundColor: "#0b2830",
-        color: "white",
+        bottom: 24,
+        width: 56,
+        height: 56,
         border: "none",
-        borderRadius: "50%",
-        width: 64,
-        height: 64,
-        fontSize: 12,
-        boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+        borderRadius: 9999,
+        backgroundColor: "#0b2830",
+        color: "#fff",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         cursor: "pointer",
+        ...style,
       }}
     >
-      💬
-      <span
-        style={{
-          display: "block",
-          fontSize: 10,
-          marginTop: 4,
-        }}
-      >
-        {label}
-      </span>
+      <span style={{ fontSize: 12, fontWeight: 600 }}>{label}</span>
     </button>
   );
 }
