@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import GlassCard from "@/components/ui/GlassCard";
+import AssistantFab from "@/components/ui/AssistantFab"; 
+// alias таарахгүй бол:
+// import AssistantFab from "../../../components/ui/AssistantFab";
 
+export default function Page() {
+  return (
+    <>
+      {
+      
 export const dynamic = "force-static";
 
 export default function ProgramIntroPage() {
@@ -72,5 +80,9 @@ export default function ProgramIntroPage() {
       </div>
 
     </main>
+  );
+}
+<AssistantFab label="Эхлэх" onClick={() => location.href = "/health/test"} />
+    </>
   );
 }
